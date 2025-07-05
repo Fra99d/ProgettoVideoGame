@@ -1,0 +1,42 @@
+<div class="search-bar mb-4 d-flex justify-content-center">
+  <input
+    class="form-control form-control-lg search-input"
+    type="text"
+    placeholder="Cerca videogiochi..."
+    [(ngModel)]="searchTerm"
+    (input)="filterGames()">
+</div>
+
+<div class="game-grid">
+  <div class="game-card d-flex flex-column" *ngFor="let game of filteredGames">
+    <div class="card-img-wrapper" (click)="openGamePopup(game)">
+      <img [src]="game.coverImageUrl" class="card-img-top" alt="{{ game.title }}">
+    </div>
+    <div class="card-body d-flex flex-column" (click)="openGamePopup(game)">
+      <h5 class="card-title text-center">{{ game.title }}</h5>
+      <p class="card-text text-center text-muted mb-3">{{ game.genre }}</p>
+    </div>
+    <div class="favorite-icon mt-2 align-self-center" (click)="toggleFavorite(game.id); $event.stopPropagation()">
+      {{ favoriteGameIds.has(game.id) ? '⭐' : '☆' }}
+    </div>
+    <div class="wishlist-icon" (click)="toggleWishlist(game.id); $event.stopPropagation()">
+      {{ wishlistGameIds.has(game.id) ? '📌' : '➕' }}
+    </div>
+  </div>
+</div>
+
+<!-- Popup overlay -->
+<div class="popup-overlay" *ngIf="selectedGame" (click)="closePopup()">
+  <div class="popup-background" [ngStyle]="{'background-image': 'url(' + selectedGame.coverImageUrl + ')'}"></div>
+  <div class="popup-content" (click)="$event.stopPropagation()" style="width: 80%; max-width: 600px;">
+    <button class="close-btn" (click)="closePopup(); $event.stopPropagation()">×</button>
+    <h2>{{ selectedGame.title }}</h2>
+    <p>{{ selectedGame.description }}</p>
+    <p><strong>Sviluppatore:</strong> {{ selectedGame.developer }}</p>
+    <p><strong>Genere:</strong> {{ selectedGame.genre }}</p>
+    <p><strong>Prezzo:</strong> {{ selectedGame.price | currency:'EUR' }}</p>
+    <div class="video-container">
+      <iframe *ngIf="videoUrl" [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>

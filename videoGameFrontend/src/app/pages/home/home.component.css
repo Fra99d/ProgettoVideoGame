@@ -1,0 +1,151 @@
+.card-img-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 16/9; /* Mantiene proporzione */
+
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.card-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-card {
+  background-color: #343a40;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 300px;          /* limite massimo alla larghezza */
+    margin: 0 auto;            /* centra la card nella colonna */
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+.game-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, 300px); /* colonne fisse da 300px */
+  justify-content: center;
+}
+.card-title {
+  font-size: 1.2rem;      /* ingrandisce il titolo */
+  font-weight: bold;
+  text-align: center;     /* centra il titolo */
+}
+
+.card-text {
+  font-size: 1rem;        /* ingrandisce il genere */
+  text-align: center;     /* centra il genere */
+  color: #ccc;
+}
+
+
+
+.search-bar {
+  width: 80%;
+  max-width: 800px;
+
+  margin: 20px;
+}
+
+.search-input {
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+}
+
+
+.favorite-icon {
+   cursor: pointer;
+   font-size: 24px;
+   user-select: none;
+   transition: color 0.3s;
+ }
+ .favorite-icon:hover {
+   color: gold;
+ }
+ .popup-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 999;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .popup-background {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   background-position: center;
+   filter: blur(8px);
+   /* Opzionalmente, un overlay scuro semi-trasparente:
+      background-color: rgba(0, 0, 0, 0.5); */
+ }
+
+ .popup-content {
+   position: relative;
+   background: rgba(0, 0, 0, 0.8);  /* pannello semi-trasparente scuro */
+   color: #fff;
+   padding: 20px;
+   border-radius: 0.5rem;
+   width: 90%;
+   max-width: 800px;
+ }
+
+ .close-btn {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   background: rgba(255, 255, 255, 0.7);
+   border: none;
+   font-size: 1.5rem;
+   cursor: pointer;
+   /* Altri stili opzionali per la X:
+      width: 2rem; height: 2rem; text-align: center; line-height: 1.5rem; */
+ }
+
+ .close-btn:focus { outline: none; }
+
+ .video-container {
+   position: relative;
+   width: 100%;
+   padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+   height: 0;
+   margin-top: 1rem;
+ }
+
+ .video-container iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+ }
+
+ .wishlist-icon {
+   cursor: pointer;
+   font-size: 24px;
+   user-select: none;
+   transition: color 0.3s;
+ }
+
+ .wishlist-icon:hover {
+   color: #00ffff; /* azzurro come evidenziazione */
+ }

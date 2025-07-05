@@ -1,0 +1,5 @@
+.main-content {
+  margin-left: 220px; /* lascia lo spazio per la sidebar */
+  transition: margin-left 0.3s;
+  padding: 20px;
+}

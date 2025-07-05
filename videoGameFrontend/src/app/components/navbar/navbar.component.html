@@ -1,0 +1,23 @@
+<div *ngIf="show" class="sidebar d-flex flex-column">
+<div class="logo-container">
+    <img src="assets/logo.png" alt="GameApp Logo" class="logo-img" routerLink="/home">
+  </div>
+
+  <nav class="nav-links flex-grow-1">
+    <a routerLink="/home" routerLinkActive="active" class="nav-link home-link">
+      🏠 Home
+    </a>
+    <a routerLink="/favorites" routerLinkActive="active" class="nav-link favorites-link">
+      ⭐ Preferiti
+    </a>
+    <a routerLink="/wishlist" routerLinkActive="active" class="nav-link wishlist-link">
+      📌 Wishlist
+    </a>
+  </nav>
+
+  <div class="logout-container">
+    <a class="nav-link logout-link" (click)="logout()">
+      🚪 Logout
+    </a>
+  </div>
+</div>

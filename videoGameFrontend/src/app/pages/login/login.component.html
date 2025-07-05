@@ -1,0 +1,25 @@
+<div class="full-page-center">
+  <div class="login-register-container">
+    <div class="logo-container">
+      <img src="assets/logo.png" alt="Logo" class="logo-img" />
+    </div>
+
+    <h2>Accedi</h2>
+    <div class="form-group">
+      <input [(ngModel)]="username" placeholder="Username" />
+      <input [(ngModel)]="password" type="password" placeholder="Password" />
+      <button (click)="login()">Login</button>
+      <p *ngIf="message" [ngClass]="{ 'error': isError, 'success': !isError }">{{ message }}</p>
+    </div>
+
+    <h2>Registrati</h2>
+    <div class="form-group">
+      <input [(ngModel)]="regUsername" placeholder="Username" />
+      <input [(ngModel)]="regEmail" placeholder="Email" type="email" />
+      <input [(ngModel)]="regPassword" type="password" placeholder="Password" />
+      <button (click)="register()">Registrati</button>
+      <p *ngIf="regMessage" [ngClass]="{ 'error': regIsError, 'success': !regIsError }">{{ regMessage }}</p>
+    </div>
+  </div>
+</div>
+

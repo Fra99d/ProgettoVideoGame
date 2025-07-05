@@ -1,0 +1,85 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background-color: #131525;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px; /* spazio sotto il logo */
+}
+
+.logo-img {
+  width: 160px;
+  height: auto;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-left: 50px;
+  margin-bottom: 300px;
+}
+
+.nav-link {
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.home-link {
+  color: #4a90e2; /* stesso colore della A del logo */
+}
+
+.favorites-link {
+  color: #4a90e2;
+}
+
+.logout-container {
+  margin-left: 50px;
+  margin-bottom: 30px;
+}
+
+.logout-link {
+  color: #ffffff; /* stesso colore della scritta Game del logo */
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logout-link:hover, .nav-link:hover {
+  color: #4a90e2;
+  transform: translateX(5px);
+}
+.logout-link {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.logout-link:hover {
+  color: #4a90e2;
+  transform: translateX(5px);
+}
+.wishlist-link {
+  color: #4a90e2; /* stesso colore di home-link e favorites-link */
+}

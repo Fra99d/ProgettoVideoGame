@@ -1,0 +1,5 @@
+<app-navbar *ngIf="showNavbar"></app-navbar>
+
+<div class="main-content" [ngStyle]="{'margin-left': showNavbar ? '220px' : '0'}">
+  <router-outlet></router-outlet>
+</div>

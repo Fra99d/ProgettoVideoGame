@@ -1,0 +1,12 @@
+<div class="game-grid">
+  <div class="game-card d-flex flex-column" *ngFor="let game of favoriteGames">
+    <div class="card-img-wrapper">
+      <img [src]="game.coverImageUrl" class="card-img-top" alt="{{ game.title }}">
+    </div>
+    <div class="card-body d-flex flex-column">
+      <h5 class="card-title text-center">{{ game.title }}</h5>
+      <p class="card-text text-center text-muted mb-3">{{ game.genre }}</p>
+      <div class="remove-icon" (click)="removeFavorite(game.id)">❌</div>
+    </div>
+  </div>
+</div>

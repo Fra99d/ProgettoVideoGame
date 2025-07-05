@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  margin-left: 220px;
+  padding: 20px;
+}
+.login-page-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-register-container {
+  width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #2b2b44;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+}
