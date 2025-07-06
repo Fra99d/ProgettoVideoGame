@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+  const token = localStorage.getItem('token');
+    console.log('[DEBUG] Token:', token);
     this.http.get<Game[]>('http://localhost:8080/api/games').subscribe({
       next: data => {
         this.games = data;
@@ -98,6 +100,7 @@ export class HomeComponent implements OnInit {
   openGamePopup(game: Game) {
     this.selectedGame = game;
     const url = this.getYoutubeEmbedUrl(game.youtubeVideoId);
+    console.log('[DEBUG] YouTube embed URL:', url);
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 

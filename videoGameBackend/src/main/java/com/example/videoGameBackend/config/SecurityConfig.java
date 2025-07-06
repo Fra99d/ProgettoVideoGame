@@ -39,9 +39,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/games/**").permitAll()  // ✅ Permetti GET su /api/games
-                        .requestMatchers("/game/**").permitAll() // ✅ PERMETTI ACCESSO ALLE IMMAGINI
+                        .requestMatchers(HttpMethod.GET, "/api/games/**").permitAll()
+                        .requestMatchers("/game/**").permitAll()
                         .requestMatchers("/api/favorites/**").authenticated()
+                        .requestMatchers("/api/wishlist/**").authenticated() // aggiunto se vuoi autenticare anche /wishlist
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore((request, response, chain) -> {
@@ -51,17 +52,21 @@ public class SecurityConfig {
                         String token = authHeader.substring(7);
                         if (jwtService.validateToken(token)) {
                             String username = jwtService.extractUsername(token);
+                            System.out.println("[DEBUG] Token valido, username: " + username);
                             UsernamePasswordAuthenticationToken authentication =
                                     new UsernamePasswordAuthenticationToken(username, null, null);
                             SecurityContextHolder.getContext().setAuthentication(authentication);
+                        } else {
+                            System.out.println("[DEBUG] Token invalido");
                         }
+                    } else {
+                        System.out.println("[DEBUG] Header Authorization mancante o malformato");
                     }
                     chain.doFilter(request, response);
                 }, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -71,9 +76,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:4200")); // Consenti il frontend Angular
+        configuration.setAllowedOrigins(List.of("http://localhost:4200"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);
 
@@ -81,8 +85,10 @@ public class SecurityConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
+
 }
