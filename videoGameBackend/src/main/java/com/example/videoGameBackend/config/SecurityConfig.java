@@ -27,11 +27,12 @@ public class SecurityConfig {
 
     private final JwtService jwtService;
 
+
     public SecurityConfig(JwtService jwtService) {
         this.jwtService = jwtService;
     }
 
-    @Bean
+    @Bean  //Con Spring Security gestisce le richieste http
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
@@ -68,7 +69,7 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
+    @Bean //usato in UserService per hash e verifica password con BCrypt;
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
